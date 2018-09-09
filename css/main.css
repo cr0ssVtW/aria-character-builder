@@ -1,0 +1,57 @@
+/* Main */
+.content-left {
+	width: 50%;
+	border-right: 1px dashed #9CC4E4;
+}
+.content-right {
+	width: 50%;
+}
+
+.attributeHeader h3 {
+	font-size: 22px;
+}
+.attributeHeader p{
+	font-size: 15px;
+	font-family: sans-serif;
+}
+
+.skillHeader h3 {
+	font-size: 22px;
+}
+.skillHeader p{
+	font-size: 15px;
+	font-family: sans-serif;
+}
+
+/* Forms */
+.form-spread {
+	margin: 5 auto;
+	padding: 5px;
+}
+
+.attribute-size {
+	text-align: center;
+	width: 30px;
+	border-radius: 15px;
+	margin-top: 1;
+}
+
+input:not([value="0"]):not(.attribute-size) {
+	background-color: #9CC4E4;
+	border-color: #FFF;
+	color: #000;
+}
+
+input.attribute-size:not([value="10"]) {
+	background-color: #9CC4E4;
+	border-color: #FFF;
+	color: #000;
+}
+
+/* Footer Stuff */
+#footer {
+    bottom : 0;
+    height:60px;
+    margin-top : 40px;
+    font-size: 11px ;
+}
