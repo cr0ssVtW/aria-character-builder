@@ -13,7 +13,6 @@ class Player extends Skills {
         $this->attributeCap = 150;
         $this->remainingAttributePoints = 150;
         $this->acceptAttribute = true;
-        $this->attributeCount = 0;
     }
 
 	function GetAllVars() {

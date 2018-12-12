@@ -3,7 +3,7 @@
 class Attributes {
 	public $attributeMin = 10;
 	public $attributeMax = 50;
-	public $attributeCount;
+	public $hasUsedDefault = false;
 	public $acceptAttribute;
 
 	public $strength;
@@ -31,65 +31,67 @@ class Attributes {
 		return $attList;
     }
 
-    public function updateReaminingAttributePoints($remaining) {
+    public function updateRemainingAttributePoints($remaining) {
     	$this->remainingAttributePoints = $remaining;
-    	echo "remaining: " . $this->remainingAttributePoints . "<br>";
+    	$this->hasUsedDefault = true; // set one time use on first attribute update
+    	//echo "remaining: " . $this->remainingAttributePoints . "<br>";
     }
     public function validateRemainingAttributePoints($value) {
-    	// Set default amount of points used on this count.
-    	$defaultUsed = $this->attributeCount * $this->attributeMin;
-    	// Get the actual remaining points, due to above default.
-    	$tempRemaining = $this->remainingAttributePoints - $defaultUsed;
-    	if ()
-    	echo "tempRamaining: " . $tempRemaining . "<br>";
-    	if ($tempRemaining < $this->attributeMin && $this->acceptAttribute == true) {
-    		echo "Whoops, we tried to set too much.";
-    		$tempRemaining = $this->remainingAttributePoints - $value;
-    		$this->acceptAttribute = false;
-    	} else if ($this->acceptAttribute == false) {
-    		echo "We can't set anymore. Default to 10 value<br>";
-    		$value = 10;
-    		$tempRemaining = 0;
-    	} else {	
-			$tempRemaining = $this->remainingAttributePoints - $value;
-			if ($value >= $tempRemaining) { 
-				$value = $tempRemaining; 
-			}
+    	// Set default amount of points used on this stat update. Always will be 60 likely. 
+    	$defaultUsed = 6 * $this->attributeMin;
+    	//echo "defaultUsed: " . $defaultUsed . "<br>";
+    	// Get the actual remaining points. 150 - default (60) - this value input subtracted by attributeMinimum per attribute
+    	if (($value - $this->attributeMin) > $this->remainingAttributePoints) { 
+    		//echo "too much <br>";
+			$value = $this->attributeMin + $this->remainingAttributePoints;
+		}
+    	if ($this->hasUsedDefault == false) {
+    		$tempRemaining = ($this->remainingAttributePoints - $defaultUsed) - ($value - $this->attributeMin);
+    	} else {
+    		$tempRemaining = ($this->remainingAttributePoints) - ($value - $this->attributeMin);
     	}
+    	//echo "tempRemaining: " . $tempRemaining . "<br>";
+    	
+    	
+    	if ($tempRemaining < $this->attributeMin && $this->acceptAttribute == true) {
+    		//echo "Whoops, we tried to set too much.<br>";
+    		// $tempRemaining = $this->remainingAttributePoints - $value;
+    		$this->acceptAttribute = false;
+    	} 
 
-    	$this->updateReaminingAttributePoints($tempRemaining);
+    	$this->updateRemainingAttributePoints($tempRemaining);
+
     	return $value;
     }
 	public function validateAttribute($value) {
-		$this->attributeCount += 1;
 		if (!is_integer($value)) { $value == 0; }
 		if ($value > $this->attributeMax) { $value = $this->attributeMax; } // 50
 		if ($value < $this->attributeMin) { $value = $this->attributeMin; } // 10
-		echo "value: " . $value . "<br>";
+		//echo "value: " . $value . "<br>";
 		return $this->validateRemainingAttributePoints($value);
 	}
 	public function set_strength($value) {
-		echo "set_strength <br>";
+		//echo "<b>set_strength</b> <br>";
 		$this->strength = $this->validateAttribute($value);
 	}
 	public function set_agility($value) {
-		echo "set_agility <br>";
+		//echo "<b>set_agility</b> <br>";
 		$this->agility = $this->validateAttribute($value);
 	}
 	public function set_intelligence($value) {
-		echo "set_intelligence <br>";
+		//echo "<b>set_intelligence</b> <br>";
 		$this->intelligence = $this->validateAttribute($value);
 	}
 	public function set_constitution($value) {
-		echo "set_constitution <br>";
+		//echo "<b>set_constitution</b> <br>";
 		$this->constitution = $this->validateAttribute($value);
 	}
 	public function set_wisdom($value) {
-		echo "set_wisdom <br>";
+		//echo "<b>set_wisdom</b> <br>";
 		$this->wisdom = $this->validateAttribute($value);
 	}
 	public function set_will($value) {
-		echo "set_will <br>";
+		//echo "<b>set_will</b> <br>";
 		$this->will = $this->validateAttribute($value);
 	}
 }
