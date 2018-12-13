@@ -30,6 +30,30 @@ class PlayerView
     public function createAttribute($attributeName) {
         return "<input class='attribute-size' name='" . $attributeName . "' value='" . (!empty($this->player->$attributeName) ? $this->player->$attributeName : 0) . "' placeholder='0'> <label>" . ucfirst($attributeName) . ":</label><br />";
     }
+
+    public function getHealth() {
+        return $this->player->calculate_Health();
+    }
+
+    public function getMana() {
+        return $this->player->calculate_Mana();
+    }
+
+    public function getStamina() {
+        return $this->player->calculate_Stamina();
+    }
+
+    public function getPower() {
+        return $this->player->calculate_Power();
+    }
+
+    public function getMagicResist() {
+        return $this->player->calculate_Magic_Resist();
+    }
+
+    public function getStunResist() {
+        return $this->player->calculate_Stun_Resist();
+    }
 }
 
 ?>

@@ -94,6 +94,68 @@ class Attributes {
 		//echo "<b>set_will</b> <br>";
 		$this->will = $this->validateAttribute($value);
 	}
+
+	// Global Mods
+
+	public function get_IntMod() {
+		$baseMod = 1;
+		if ($this->intelligence > 10) {
+			return $baseMod + ( ($this->intelligence - 10) * 0.00625);
+		}
+
+		return $baseMod;
+	}
+
+	// Calculations
+	public function calculate_Health() {
+		$baseHP = 150;
+		$conHpBonus = 0;
+		if ($this->constitution > 40) {
+			$conHpBonus = ($conHpBonus+350) + (($this->constitution - 40) * 5);
+		} 
+		else if ($this->constitution > 30) {
+			$conHpBonus = ($conHpBonus+250) + (($this->constitution - 30) * 10);
+		}
+		else if ($this->constitution > 20) {
+			$conHpBonus = ($conHpBonus+100) + (($this->constitution - 20) * 15);
+		}
+		else if ($this->constitution > 10) {
+			$conHpBonus = ($this->constitution-10) * 10;
+		}
+
+		return $baseHP + $conHpBonus;
+	}
+
+	public function calculate_Mana() {
+		$mana = floor($this->intelligence * 2.5);
+
+		return $mana;
+	}
+
+	public function calculate_Stamina() {
+		$baseStamina = 0;
+		$stamina = floor($baseStamina + ($this->agility * 2));
+
+		return $stamina;
+	}
+
+	public function calculate_Magic_Resist() {
+		$resistChance = (0.5 * (($this->wisdom) - $this->attributeMin) / ($this->attributeMax - $this->attributeMin)) * 100;
+
+		return $resistChance;
+	}
+
+	public function calculate_Stun_Resist() {
+		$resistChance = (0.5 * (($this->will) - $this->attributeMin) / ($this->attributeMax - $this->attributeMin)) * 100;
+
+		return $resistChance;
+	}
+
+	public function calculate_Evasion() {
+
+	}
+
+
 }
 
 ?>

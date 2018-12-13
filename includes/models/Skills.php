@@ -182,6 +182,18 @@ class Skills extends Attributes {
 		$this->vigor = $this->validate($value);
 	}
 
+	// Calculate skill bonuses
+
+	public function calculate_Power() {
+		$powerBase = 0;
+		$powerBonus = 0;
+		$magicAffinityBonus = $this->magicAffinity / 5;
+
+		$power = floor(($powerBase + $powerBonus + $magicAffinityBonus) * $this->get_IntMod());
+
+		return $power;
+	}
+
 }
 
 

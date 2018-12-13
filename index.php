@@ -93,7 +93,12 @@
 							</div>
 					    </div>
 					    <div class="col-sm">
-				      		One of three columns
+				      		Health: <? echo $playerView->getHealth(); ?><br>
+				      		Mana: <? echo $playerView->getMana(); ?><br>
+				      		Stamina: <? echo $playerView->getStamina(); ?><br>
+				      		Power: <? echo $playerView->getPower(); ?>%<br>
+				      		Magic Resist: <? echo $playerView->getMagicResist(); ?>%<br>
+				      		Stun Resist: <? echo $playerView->getStunResist(); ?>%<br>
 					    </div>
 					    <div class="col-sm">
 					    	<div class="attributeHeader">
