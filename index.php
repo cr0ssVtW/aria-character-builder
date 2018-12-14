@@ -99,6 +99,7 @@
 				      		Power: <? echo $playerView->getPower(); ?>%<br>
 				      		Magic Resist: <? echo $playerView->getMagicResist(); ?>%<br>
 				      		Stun Resist: <? echo $playerView->getStunResist(); ?>%<br>
+				      		Attack Rating: <? echo $playerView->getAttackPower(); ?><br>
 					    </div>
 					    <div class="col-sm">
 					    	<div class="attributeHeader">

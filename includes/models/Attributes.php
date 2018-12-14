@@ -106,6 +106,15 @@ class Attributes {
 		return $baseMod;
 	}
 
+	public function get_StrMod() {
+		$mod = 0;
+		if ($this->strength > 10) {
+			$mod = ($this->strength * 2.5) / 100;
+		}
+
+		return $mod;
+	}
+
 	// Calculations
 	public function calculate_Health() {
 		$baseHP = 150;

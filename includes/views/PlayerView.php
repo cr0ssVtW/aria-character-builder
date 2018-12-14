@@ -31,6 +31,7 @@ class PlayerView
         return "<input class='attribute-size' name='" . $attributeName . "' value='" . (!empty($this->player->$attributeName) ? $this->player->$attributeName : 0) . "' placeholder='0'> <label>" . ucfirst($attributeName) . ":</label><br />";
     }
 
+    // Attributes
     public function getHealth() {
         return $this->player->calculate_Health();
     }
@@ -43,16 +44,20 @@ class PlayerView
         return $this->player->calculate_Stamina();
     }
 
-    public function getPower() {
-        return $this->player->calculate_Power();
-    }
-
     public function getMagicResist() {
         return $this->player->calculate_Magic_Resist();
     }
 
     public function getStunResist() {
         return $this->player->calculate_Stun_Resist();
+    }
+
+    // Skills
+    public function getPower() {
+        return $this->player->calculate_Power();
+    }
+    public function getAttackPower() {
+        return $this->player->calculate_AttackPower();
     }
 }
 

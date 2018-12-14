@@ -194,6 +194,14 @@ class Skills extends Attributes {
 		return $power;
 	}
 
+	public function calculate_AttackPower() {
+		$baseWeaponAttack = 1; // Fist damage = 1, otherwise need weapon information here
+		$attackMod = 0; // Determine attack mod from weapon and buff
+		$attack = $baseWeaponAttack * ($this->get_StrMod() + ($this->vigor / 80) + $attackMod);
+
+		return $attack;
+	}
+
 }
 
 
