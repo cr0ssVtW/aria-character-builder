@@ -8,6 +8,7 @@ This could be more easily accomplished using Javascript and some HTML5 canvas st
 on the backend. I MAY cave in do some async javascript stuff for single page things. We'll see.
 
 TODO: 
-- Finish basic stat/skill deduction/tracking and display. 
+- ~~Finish basic stat/skill deduction/tracking and display.~~ Finished for now. Still wonky but works.
+- Cleanup the above, make it pretty with sliders and all that rather than standard form inputs. 
 - Add hit/miss/damage/resist calculations for stats/skills in display using LoA algo's
-- ??
+- Create weapon classes for all weapons, and armor classes for armor. Will be used for Power and Defense calculations.
