@@ -107,7 +107,7 @@ class Attributes {
 	}
 
 	public function get_StrMod() {
-		$mod = 0;
+		$mod = 0.25;
 		if ($this->strength > 10) {
 			$mod = ($this->strength * 2.5) / 100;
 		}

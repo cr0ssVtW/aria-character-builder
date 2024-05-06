@@ -72,7 +72,7 @@ class Skills extends Attributes {
 			'vigor'				=> $this->vigor
 		];
 		foreach ($skillList as $key=>$value) {
-			if ($value == 0 || $value > 100) {
+			if ($value <= 0 || $value > 100) {
 				unset($skillList[$key]);
 			}
 		}
@@ -86,11 +86,13 @@ class Skills extends Attributes {
     	if ($this->remainingSkillPoints < 0) { $this->remainingSkillPoints = 0; }
     	if ($this->remainingSkillPoints > 600) { $this->remainingSkillPoints = 600; }
     }
+
 	public function validate($value) {
 		if (!is_integer($value)) { $value == 0; }
 		if (is_integer($value) && $value > 100) { $value = 100; }
 		if (is_integer($value) && $value <= 0) { $value = 0; }
 
+		if ($this->remainingSkillPoints < $value) { $value = $this->remainingSkillPoints; }
 		$this->updateRemainingSkillPoints($value);
 		return $value;
 	}

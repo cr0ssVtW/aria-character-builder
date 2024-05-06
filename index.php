@@ -93,15 +93,6 @@
 							</div>
 					    </div>
 					    <div class="col-sm">
-				      		Health: <? echo $playerView->getHealth(); ?><br>
-				      		Mana: <? echo $playerView->getMana(); ?><br>
-				      		Stamina: <? echo $playerView->getStamina(); ?><br>
-				      		Power: <? echo $playerView->getPower(); ?>%<br>
-				      		Magic Resist: <? echo $playerView->getMagicResist(); ?>%<br>
-				      		Stun Resist: <? echo $playerView->getStunResist(); ?>%<br>
-				      		Attack Rating: <? echo $playerView->getAttackPower(); ?><br>
-					    </div>
-					    <div class="col-sm">
 					    	<div class="attributeHeader">
 					      		<h3>Attributes</h3>
 					      		<p><b>Remaining:</b> <? echo $player->remainingAttributePoints; ?></p>
@@ -115,6 +106,15 @@
 								<? echo $playerView->createAttribute("will"); ?>
 							</div>
 					    </div>
+						<div class="col-sm">
+				      		Health: <? echo $playerView->getHealth(); ?><br>
+				      		Mana: <? echo $playerView->getMana(); ?><br>
+				      		Stamina: <? echo $playerView->getStamina(); ?><br>
+				      		Power Bonus: <? echo $playerView->getPower(); ?>%<br>
+				      		Magic Resist Chance: <? echo $playerView->getMagicResist(); ?>%<br>
+				      		Stun Resist Chance: <? echo $playerView->getStunResist(); ?>%<br>
+				      		Attack Rating Mod: <? echo $playerView->getAttackPower(); ?><br>
+					    </div>
 			  		</div>
 				</div>
 			</div>
@@ -125,6 +125,20 @@
 	<?php include 'includes/footer.php'; ?>
 
 	<script language="JavaScript" type="text/javascript">
+		function createCookie(name, value) {
+			var date = new Date();
+			date.setTime(date.getTime()+(30*1000)); // 30 second expiry
+			var expires = "; expires="+date.toGMTString();
+
+			document.cookie = name+"="+value+expires+"; path=/; SameSite=None; Secure";
+		}
+		window.onload = function() {
+			if (!document.cookie.split("; ").find((row) => row.startsWith("firstLoad"))) {
+				createCookie("firstLoad", "true");
+				$( "#playerForm" ).submit();
+			}
+		}
+
 		$(document).ready(function(e) {
 			// Forms
 			// User loses focus on an input, lets capture and submit

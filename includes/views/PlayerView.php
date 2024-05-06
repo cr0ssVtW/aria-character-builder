@@ -28,7 +28,7 @@ class PlayerView
     }
 
     public function createAttribute($attributeName) {
-        return "<input class='attribute-size' name='" . $attributeName . "' value='" . (!empty($this->player->$attributeName) ? $this->player->$attributeName : 0) . "' placeholder='0'> <label>" . ucfirst($attributeName) . ":</label><br />";
+        return "<input class='attribute-size' name='" . $attributeName . "' value='" . (!empty($this->player->$attributeName) ? $this->player->$attributeName : 10) . "' placeholder='10'> <label>" . ucfirst($attributeName) . ":</label><br />";
     }
 
     // Attributes
