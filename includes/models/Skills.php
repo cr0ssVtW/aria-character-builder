@@ -12,6 +12,7 @@ class Skills extends Attributes {
 	public $beastmastery;
 	public $blacksmithing;
 	public $blocking;
+	public $brawling;
 	public $carpentry;
 	public $channeling;
 	public $cooking;
@@ -24,6 +25,7 @@ class Skills extends Attributes {
 	public $inscription;
 	public $lancing;
 	public $lightArmor;
+	public $lockpicking;
 	public $lumberjack;
 	public $magicAffinity;
 	public $manifestation;
@@ -49,6 +51,7 @@ class Skills extends Attributes {
 			'beastmastery'		=> $this->beastmastery,
 			'blacksmithing'		=> $this->blacksmithing,
 			'blocking'			=> $this->blocking,
+			'brawling'			=> $this->brawling,
 			'carpentry'			=> $this->carpentry,
 			'channeling'		=> $this->channeling,
 			'cooking'			=> $this->cooking,
@@ -61,6 +64,7 @@ class Skills extends Attributes {
 			'inscription'		=> $this->inscription,
 			'lancing'			=> $this->lancing,
 			'lightArmor'		=> $this->lightArmor,
+			'lockpicking'		=> $this->lockpicking,
 			'lumberjack'		=> $this->lumberjack,
 			'magicAffinity'		=> $this->magicAffinity,
 			'manifestation'		=> $this->manifestation,
@@ -96,6 +100,7 @@ class Skills extends Attributes {
 		$this->updateRemainingSkillPoints($value);
 		return $value;
 	}
+
 	public function set_alchemy($value) {
 		$this->alchemy = $this->validate($value);
 	}
@@ -119,6 +124,9 @@ class Skills extends Attributes {
 	}
 	public function set_blocking($value) {
 		$this->blocking = $this->validate($value);
+	}
+	public function set_brawling($value) {
+		$this->brawling = $this->validate($value);
 	}
 	public function set_carpentry($value) {
 		$this->carpentry = $this->validate($value);
@@ -159,6 +167,9 @@ class Skills extends Attributes {
 	public function set_lumberjack($value) {
 		$this->lumberjack = $this->validate($value);
 	}
+	public function set_lockpicking($value) {
+		$this->lockpicking = $this->validate($value);
+	}
 	public function set_magicAffinity($value) {
 		$this->magicAffinity = $this->validate($value);
 	}
@@ -189,9 +200,10 @@ class Skills extends Attributes {
 	public function calculate_Power() {
 		$powerBase = 0;
 		$powerBonus = 0;
-		$magicAffinityBonus = $this->magicAffinity / 5;
+		$magicAffinityBonus = ($this->magicAffinity / 5);
+		if ($this->magicAffinity == 100) { $magicAffinityBonus = 20; }
 
-		$power = floor(($powerBase + $powerBonus + $magicAffinityBonus) * $this->get_IntMod());
+		$power = round(($powerBase + $powerBonus + $magicAffinityBonus) + $this->get_IntMod());
 
 		return $power;
 	}

@@ -98,12 +98,8 @@ class Attributes {
 	// Global Mods
 
 	public function get_IntMod() {
-		$baseMod = 1;
-		if ($this->intelligence > 10) {
-			return $baseMod + ( ($this->intelligence - 10) * 0.00625);
-		}
-
-		return $baseMod;
+		$intMod = floor($this->intelligence / 10);
+		return $intMod;
 	}
 
 	public function get_StrMod() {
@@ -158,6 +154,15 @@ class Attributes {
 		$resistChance = (0.5 * (($this->will) - $this->attributeMin) / ($this->attributeMax - $this->attributeMin)) * 100;
 
 		return $resistChance;
+	}
+
+	public function calculate_AttackSpeedBonus() {
+		$attackSpeedMod = 0;
+		if ($this->agility >= 15 && $this->agility < 30) { $attackSpeedMod = -0.25; }
+		if ($this->agility >= 30 && $this->agility < 45) { $attackSpeedMod = -0.50; }
+		if ($this->agility >= 45) { $attackSpeedMod = -0.75; }
+
+		return $attackSpeedMod;
 	}
 
 	public function calculate_Evasion() {

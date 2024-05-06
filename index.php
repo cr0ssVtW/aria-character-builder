@@ -26,53 +26,47 @@
 		<div class="row">
 			<div class="content-left">
 				<div class="container">
-					<? echo $playerView->returnHome(); ?>
+					<?php echo $playerView->returnHome(); ?>
 						<fieldset>
 						<div class="row">
 							<div class="col-sm-1 form-spread">
-								<? $playerView->createInput("alchemy"); ?>
-								<? $playerView->createInput("animalLore"); ?>
-								<? $playerView->createInput("animalTaming"); ?>
-								<? $playerView->createInput("archery"); ?>
+								<?php $playerView->createInput("alchemy"); ?>
+								<?php $playerView->createInput("animalLore"); ?>
+								<?php $playerView->createInput("animalTaming"); ?>
+								<?php $playerView->createInput("archery"); ?>
+								<?php $playerView->createInput("bashing"); ?>
+								<?php $playerView->createInput("beastmastery"); ?>
+								<?php $playerView->createInput("blacksmithing"); ?>
+								<?php $playerView->createInput("blocking"); ?>
 							</div>
 							<div class="col-sm-1 form-spread">
-								<? $playerView->createInput("bashing"); ?>
-								<? $playerView->createInput("beastmastery"); ?>
-								<? $playerView->createInput("blacksmithing"); ?>
-								<? $playerView->createInput("blocking"); ?>
+								<?php $playerView->createInput("brawling"); ?>
+								<?php $playerView->createInput("carpentry"); ?>
+								<?php $playerView->createInput("channeling"); ?>
+								<?php $playerView->createInput("cooking"); ?>
+								<?php $playerView->createInput("evocation"); ?>
+								<?php $playerView->createInput("fabrication"); ?>
+								<?php $playerView->createInput("fishing"); ?>
+								<?php $playerView->createInput("healing"); ?>
 							</div>
 							<div class="col-sm-1 form-spread">
-								<? $playerView->createInput("carpentry"); ?>
-								<? $playerView->createInput("channeling"); ?>
-								<? $playerView->createInput("cooking"); ?>
-								<? $playerView->createInput("evocation"); ?>
+								<?php $playerView->createInput("heavyArmor"); ?>
+								<?php $playerView->createInput("hiding"); ?>
+								<?php $playerView->createInput("inscription"); ?>
+								<?php $playerView->createInput("lancing"); ?>
+								<?php $playerView->createInput("lightArmor"); ?>
+								<?php $playerView->createInput("lockpicking"); ?>
+								<?php $playerView->createInput("lumberjack"); ?>
+								<?php $playerView->createInput("magicAffinity"); ?>
 							</div>
 							<div class="col-sm-1 form-spread">
-								<? $playerView->createInput("fabrication"); ?>
-								<? $playerView->createInput("fishing"); ?>
-								<? $playerView->createInput("healing"); ?>
-								<? $playerView->createInput("heavyArmor"); ?>
-							</div>
-							<div class="col-sm-1 form-spread">
-								<? $playerView->createInput("hiding"); ?>
-								<? $playerView->createInput("inscription"); ?>
-								<? $playerView->createInput("lancing"); ?>
-								<? $playerView->createInput("lightArmor"); ?>
-							</div>
-							<div class="col-sm-1 form-spread">
-								<? $playerView->createInput("lumberjack"); ?>
-								<? $playerView->createInput("magicAffinity"); ?>
-								<? $playerView->createInput("manifestation"); ?>
-								<? $playerView->createInput("mining"); ?>
-							</div>
-							<div class="col-sm-1 form-spread">
-								<? $playerView->createInput("piercing"); ?>
-								<? $playerView->createInput("slashing"); ?>
-								<? $playerView->createInput("stealth"); ?>
-								<? $playerView->createInput("treasureHunting"); ?>
-							</div>
-							<div class="col-sm-1 form-spread">
-								<? $playerView->createInput("vigor"); ?>
+								<?php $playerView->createInput("manifestation"); ?>
+								<?php $playerView->createInput("mining"); ?>
+								<?php $playerView->createInput("piercing"); ?>
+								<?php $playerView->createInput("slashing"); ?>
+								<?php $playerView->createInput("stealth"); ?>
+								<?php $playerView->createInput("treasureHunting"); ?>
+								<?php $playerView->createInput("vigor"); ?>
 							</div>
 							<input type="hidden" name="action" id="action" value="updateSkill"/>
 						</div>
@@ -86,34 +80,40 @@
 					    <div class="col-sm">
 					    	<div class="skillHeader">
 						    	<h3>Skills</h3>
-						    	<p><b>Remaining:</b> <? echo $player->remainingSkillPoints; ?></p>
+						    	<p><b>Remaining:</b> <?php echo $player->remainingSkillPoints; ?></p>
 						    </div>
 						    <div>
-								<? echo $playerView->displaySkills(); ?>
+								<?php echo $playerView->displaySkills(); ?>
 							</div>
 					    </div>
 					    <div class="col-sm">
 					    	<div class="attributeHeader">
 					      		<h3>Attributes</h3>
-					      		<p><b>Remaining:</b> <? echo $player->remainingAttributePoints; ?></p>
+					      		<p><b>Remaining:</b> <?php echo $player->remainingAttributePoints; ?></p>
 				      		</div>
 				      		<div>
-								<? echo $playerView->createAttribute("strength"); ?>
-								<? echo $playerView->createAttribute("agility"); ?>
-								<? echo $playerView->createAttribute("intelligence"); ?>
-								<? echo $playerView->createAttribute("constitution"); ?>
-								<? echo $playerView->createAttribute("wisdom"); ?>
-								<? echo $playerView->createAttribute("will"); ?>
+								<?php echo $playerView->createAttribute("strength"); ?>
+								<?php echo $playerView->createAttribute("agility"); ?>
+								<?php echo $playerView->createAttribute("intelligence"); ?>
+								<?php echo $playerView->createAttribute("constitution"); ?>
+								<?php echo $playerView->createAttribute("wisdom"); ?>
+								<?php echo $playerView->createAttribute("will"); ?>
 							</div>
 					    </div>
 						<div class="col-sm">
-				      		Health: <? echo $playerView->getHealth(); ?><br>
-				      		Mana: <? echo $playerView->getMana(); ?><br>
-				      		Stamina: <? echo $playerView->getStamina(); ?><br>
-				      		Power Bonus: <? echo $playerView->getPower(); ?>%<br>
-				      		Magic Resist Chance: <? echo $playerView->getMagicResist(); ?>%<br>
-				      		Stun Resist Chance: <? echo $playerView->getStunResist(); ?>%<br>
-				      		Attack Rating Mod: <? echo $playerView->getAttackPower(); ?><br>
+							<div class="bonusHeader">
+					      		<h3>Results:</h3>
+				      		</div>
+				      		<div>
+					      		<span title="Health is determined by Constitution."><b>Health:</b> <?php echo $playerView->getHealth(); ?></span><br>
+					      		<span title="Mana is determined by Intelligence."><b>Mana:</b> <?php echo $playerView->getMana(); ?></span><br>
+					      		<span title="Stamina is determined by Agility."><b>Stamina:</b> <?php echo $playerView->getStamina(); ?></span><br>
+					      		<span title="Magical Power generated from Magical Affinity, intelligence modifier, and other bonues."><b>Power Bonus:</b> <?php echo $playerView->getPower(); ?>%</span><br>
+					      		<span title="Chance to take half damage from Magical spells/abilities."><b>Magic Resist Chance:</b> <?php echo $playerView->getMagicResist(); ?>%</span><br>
+					      		<span title="Chance to resist Hamstring, Stuns, Mortal Strike, etc."><b>Effect Resist Chance:</b> <?php echo $playerView->getStunResist(); ?>%</span><br>
+					      		<span title="Base weapon damage modifier. Determined by Strength and Vigor."><b>Attack Rating Mod:</b> <?php echo $playerView->getAttackPower(); ?></span><br>
+					      		<span title="Bonus to attack speed is determined by Agility. Every 15 points reduces attack speed by 0.25 seconds."><b>Attack Speed Bonus:</b> <?php echo $playerView->getAttackSpeed(); ?></span><br>
+					      	</div>
 					    </div>
 			  		</div>
 				</div>

@@ -44,6 +44,10 @@ class PlayerView
         return $this->player->calculate_Stamina();
     }
 
+    public function getAttackSpeed() {
+        return $this->player->calculate_AttackSpeedBonus();
+    }
+
     public function getMagicResist() {
         return $this->player->calculate_Magic_Resist();
     }
